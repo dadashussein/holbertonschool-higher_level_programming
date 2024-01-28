@@ -14,3 +14,12 @@
 * What is sequence unpacking
 * What is the `del` statement and how to use it
 ***
+
+### Resources
+* [3.1.3. Lists](https://docs.python.org/3.4/tutorial/introduction.html#lists)
+* [Data structures (until 5.3. Tuples and Sequences included)](https://docs.python.org/3.4/tutorial/datastructures.html)
+* [Learn to Program 6 : Lists](https://www.youtube.com/watch?v=A1HUzrvS-Pw)
+* [Tuple](https://www.youtube.com/watch?v=NI26dqhs2Rk)
+* [Python Lists](https://www.youtube.com/watch?v=ohCDWZgNIU0)
+* [Learn to Program 10 : Lists](https://www.youtube.com/watch?v=1yUn-ydsgKk)
+* [Python Tuples](https://www.youtube.com/watch?v=NI26dqhs2Rk)
