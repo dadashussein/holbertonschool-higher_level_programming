@@ -5,7 +5,10 @@ import sys
 def safe_function(fct, *args):
     result = 0
     try:
-        result = fct(args[0], args[1])
+        if args:
+           result = fct(*args)
+        else:
+            result = fct()
     except ZeroDivisionError as e:
         result = None
         print("Exception: ", e, file=sys.stderr)
