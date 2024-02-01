@@ -12,7 +12,11 @@ class Square:
     def size(self):
         """Document for size method"""
         return self.__size
-
+    
+    @property
+    def position(self):
+        return self.__position
+    
     @size.setter
     def size(self, value):
         """Document for setter property"""
@@ -21,11 +25,7 @@ class Square:
         if value < 0:
             raise ValueError("size must be >= 0")
         self.__size = value
-
-    @property
-    def position(self):
-        return self.__position
-
+        
     @position.setter
     def position(self, value):
         """Document for setter property"""
@@ -39,14 +39,18 @@ class Square:
 
     def area(self):
         """Document for method"""
-        return self.size ** 2
+        return self.__size ** 2
 
     def my_print(self):
-        """Document for method"""
-        if self.size == 0:
+        """ Print the square"""
+        if not self.size:
             print()
         else:
-            for i in range(self.position[1]):
+            for row in range(self.__position[1]):
                 print()
-            for i in range(self.size):
-                print("{}{}".format(" " * self.position[0], "#" * self.size))
+            for row in range(self.__size):
+                for column in range(self.__position[0]):
+                    print(" ", end="")
+                for column in range(self.__size):
+                    print("#", end="")
+                print()
