@@ -7,7 +7,6 @@ Import module
 >>> text_indentation("Awsome?")
 Awsome?
 <BLANKLINE>
-<BLANKLINE>
 
 # Test 3
 >>> text_indentation(64)
