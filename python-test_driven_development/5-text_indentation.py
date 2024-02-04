@@ -4,13 +4,10 @@
 
 def text_indentation(text):
     """Function print text"""
-    if not isinstance(text, str):
+    if type(text) is not str:
         raise TypeError("text must be a string")
-    new_text = ""
-    for char in text:
-        if char in ".?:":
-            new_text += "\n\n"
-        else:
-            new_text += char
-    print(new_text.strip(), end="")
-    return new_text.strip()
+    text = text.replace('.', '.\n\n')
+    text = text.replace('?', '?\n\n')
+    text = text.replace(':', ':\n\n')
+    print("\n".join([i.strip() for i in text.split("\n")]), end="")
+    print()
