@@ -12,15 +12,13 @@ Doctest written by Dadashussein
 #test for area
 >>> bg.area()
 Traceback (most recent call last):
-	...
-NotImplementedError: area() is not implemented
+    ...
+Exception: area() is not implemented
 
 
 #test for integer_validator
 >>> bg.integer_validator("my_int", 89)
-Traceback (most recent call last):
-	...
-TypeError: my_int must be an integer
+
 
 >>> bg.integer_validator("name", "John")
 Traceback (most recent call last):
