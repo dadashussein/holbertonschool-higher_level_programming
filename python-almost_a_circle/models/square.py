@@ -25,6 +25,7 @@ class Square(Rectangle):
         self.height = value
 
     def update(self, *args, **kwargs):
+        """Document for method"""
         if args and len(args) > 0:
             if len(args) >= 1:
                 self.id = args[0]
