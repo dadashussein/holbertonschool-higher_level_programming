@@ -67,3 +67,7 @@ class Rectangle(Base):
         if input < 0:
             raise ValueError("y must be >= 0")
         self.__y = input
+
+    def area(self):
+        """Document for method"""
+        return self.__height * self.__width
