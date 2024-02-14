@@ -71,3 +71,10 @@ class Rectangle(Base):
     def area(self):
         """Document for method"""
         return self.__height * self.__width
+
+    def display(self):
+        """Doc for method"""
+        for __ in range(self.__height):
+            for __ in range(self.__width):
+                print("#", end="")
+            print()
