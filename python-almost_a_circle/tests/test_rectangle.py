@@ -6,6 +6,16 @@ from models.rectangle import Rectangle
 
 class TestRectangle(unittest.TestCase):
     """test cases for rectangle class"""
+
+    def test_rectangle(self):
+        """Tests the rectangle class"""
+        r = Rectangle(1, 2, 3, 4, 5)
+        self.assertEqual(r.width, 1)
+        self.assertEqual(r.height, 2)
+        self.assertEqual(r.x, 3)
+        self.assertEqual(r.y, 4)
+        self.assertEqual(r.id, 5)
+
     def test_str(self):
         """Tests the __str__()"""
         r1 = Rectangle(4, 2, 1, 5, 89)
