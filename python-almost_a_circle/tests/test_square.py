@@ -108,6 +108,30 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(len(loaded_squares), 1)
 
     def test_save_to_file(self):
-        s1 = Square(2, 1, 2)
-        Square.save_to_file([s1])
-        self.assertTrue(os.path.exists("Square.json"))
+        try:
+            os.remove("Square.json")
+        except Exception as e:
+            pass
+
+        Square.save_to_file(None)
+        with open("Square.json", "r") as file:
+            self.assertEqual(file.read(), "[]")
+
+        try:
+            os.remove("Square.json")
+        except Exception as e:
+            pass
+
+        Square.save_to_file([])
+        with open("Square.json", "r") as file:
+            self.assertEqual(file.read(), "[]")
+
+        try:
+            os.remove("Square.json")
+        except Exception as e:
+            pass
+
+        Square.save_to_file([Square(1, 2, id=13)])
+        with open("Square.json", "r") as file:
+            self.assertEqual(file.read(),
+                             '[{"id": 13, "size": 1, "x": 2, "y": 0}]')
