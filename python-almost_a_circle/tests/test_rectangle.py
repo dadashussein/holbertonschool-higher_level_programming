@@ -9,12 +9,13 @@ class TestRectangle(unittest.TestCase):
 
     def test_rectangle(self):
         """Tests the rectangle class"""
-        r = Rectangle(1, 2, 3, 4, 5)
-        self.assertEqual(r.width, 1)
-        self.assertEqual(r.height, 2)
-        self.assertEqual(r.x, 3)
-        self.assertEqual(r.y, 4)
-        self.assertEqual(r.id, 5)
+        r1 = Rectangle(1, 2)
+        self.assertEqual(r1.width, 1)
+        self.assertEqual(r1.height, 2)
+        r2 = Rectangle(1, 2, 3, 4, 5)
+        self.assertEqual(r2.x, 3)
+        self.assertEqual(r2.y, 4)
+        self.assertEqual(r2.id, 5)
 
     def test_str(self):
         """Tests the __str__()"""
