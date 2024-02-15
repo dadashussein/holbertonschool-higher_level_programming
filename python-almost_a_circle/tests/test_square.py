@@ -134,4 +134,4 @@ class TestSquare(unittest.TestCase):
         Square.save_to_file([Square(1, 2, id=13)])
         with open("Square.json", "r") as file:
             self.assertEqual(file.read(),
-                             '[{"id": 13, "size": 1, "x": 2, "y": 0}]')
+                             '[{"id": 13, "x": 2, "size": 1, "y": 0}]')
