@@ -38,6 +38,15 @@ class TestRectangle(unittest.TestCase):
         r3.display()
         sys.stdout = sys.__stdout__
         self.assertEqual(captured_output.getvalue(), "##\n##\n##\n")
+        
+    def test_display_xy(self):
+        """Tests the display method with x and y"""
+        r3 = Rectangle(2, 3, 2, 2)
+        captured_output = io.StringIO()
+        sys.stdout = captured_output
+        r3.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(captured_output.getvalue(), "\n\n  ##\n  ##\n  ##\n")
 
     def test_update(self):
         """Tests the update method"""
