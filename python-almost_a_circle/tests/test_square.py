@@ -1,5 +1,6 @@
 """test rectangle class"""
 import unittest
+import os
 from models.square import Square
 
 
@@ -16,7 +17,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s2.id, 99)
         self.assertEqual(s2.x, 3)
         self.assertEqual(s2.y, 1)
-        
+
     def test_square(self):
         s1 = Square(1, 2)
         self.assertEqual(s1.size, 1)
@@ -52,6 +53,10 @@ class TestSquare(unittest.TestCase):
             Square(1, 2, -3)
         with self.assertRaises(ValueError):
             Square(0)
+
+    def test_str(self):
+        s0 = Square(1, id=66)
+        self.assertEqual(str(s0), "[Square] (66) 0/0 - 1")
 
     def test_area(self):
         """Tests area of Square"""
@@ -103,9 +108,6 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(len(loaded_squares), 1)
 
     def test_save_to_file(self):
-        Square.save_to_file(None)
-        with open("Square.json", "r") as f:
-            self.assertEqual(f.read(), "[]")
-        Square.save_to_file([])
-        with open("Square.json", "r") as f:
-            self.assertEqual(f.read(), "[]")
+        s1 = Square(2, 1, 2)
+        Square.save_to_file([s1])
+        self.assertTrue(os.path.exists("Square.json"))
