@@ -49,7 +49,7 @@ class Base:
     @classmethod
     def load_from_file(cls):
         filename = cls.__name__ + ".json"
-        if filename is None:
+        if filename is None or filename == []:
             return []
         with open(filename, "r") as f:
             list_dicts = Base.from_json_string(f.read())
