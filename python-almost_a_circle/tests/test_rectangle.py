@@ -2,6 +2,8 @@
 """test rectangle class"""
 import unittest
 import os
+import sys
+import io
 from models.rectangle import Rectangle
 
 
@@ -31,7 +33,11 @@ class TestRectangle(unittest.TestCase):
     def test_display(self):
         """Tests the display method"""
         r3 = Rectangle(2, 3)
-        self.assertEqual(r3.display(), None)
+        captured_output = io.StringIO()
+        sys.stdout = captured_output
+        r3.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(captured_output.getvalue(), "##\n##\n##\n")
 
     def test_update(self):
         """Tests the update method"""
