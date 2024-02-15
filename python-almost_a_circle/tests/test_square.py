@@ -51,3 +51,25 @@ class TestSquare(unittest.TestCase):
         s1 = Square(8, 1, 4, 42)
         expected_dict = {'id': 42, 'x': 1, 'size': 8, 'y': 4}
         self.assertEqual(s1.to_dictionary(), expected_dict)
+
+    def test_create(self):
+        s1 = Square.create(**{'id': 89})
+        self.assertEqual(s1.id, 89)
+
+        s2 = Square.create(**{'id': 89, 'size': 1})
+        self.assertEqual(s2.id, 89)
+        self.assertEqual(s2.size, 1)
+
+    def test_load_from_file(self):
+        s1 = Square(2, 1, 2)
+        Square.save_to_file([s1])
+        loaded_squares = Square.load_from_file()
+        self.assertEqual(len(loaded_squares), 1)
+
+    def test_save_to_file(self):
+        Square.save_to_file(None)
+        with open("Square.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+        Square.save_to_file([])
+        with open("Square.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
