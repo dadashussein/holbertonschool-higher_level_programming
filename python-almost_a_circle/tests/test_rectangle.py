@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """test rectangle class"""
 import unittest
+import os
 from models.rectangle import Rectangle
 
 
@@ -65,6 +66,37 @@ class TestRectangle(unittest.TestCase):
             Rectangle(1, 2, -3)
         with self.assertRaises(ValueError):
             Rectangle(1, 2, 3, -4)
+
+    def test_save_to_file(self):
+        try:
+            os.remove("Rectangle.json")
+        except Exception as e:
+            pass
+
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", "r") as file:
+            self.assertEqual(file.read(), "[]")
+
+        try:
+            os.remove("Rectangle.json")
+        except Exception as e:
+            pass
+
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", "r") as file:
+            self.assertEqual(file.read(), "[]")
+
+        try:
+            os.remove("Rectangle.json")
+        except Exception as e:
+            pass
+
+        Rectangle.save_to_file([Rectangle(1, 2, id=13)])
+        with open("Rectangle.json", "r") as file:
+            self.assertEqual(
+                file.read(),
+                '[{"id": 13, "width": 1, "height": 2, "x": 0, "y": 0}]'
+            )
 
     def test_to_dictionary(self):
         """Tests the to_dictionary method"""
