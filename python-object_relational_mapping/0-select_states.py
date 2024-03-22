@@ -3,14 +3,12 @@
 import MySQLdb
 import sys
 
+
 def get_states(username, password, database):
-    db = MySQLdb.connect(
-    host = 'localhost',
-    user = username,
-    passwd = password,
-    db = database,
-    port=3306)
-    
+    """ Get states from database"""
+    db = MySQLdb.connect(host='localhost', port=3306,
+                         user=username, passwd=password, db=database)
+
     cursor = db.cursor()
     sql_query = "SELECT * FROM states ORDER BY states.id ASC"
     cursor.execute(sql_query)
@@ -19,6 +17,7 @@ def get_states(username, password, database):
         print(row)
     cursor.close()
     db.close()
+
 
 if __name__ == "__main__":
     mysql_username = sys.argv[1]
