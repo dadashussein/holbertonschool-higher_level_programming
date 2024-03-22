@@ -1,27 +1,27 @@
 #!/usr/bin/python3
+"""Select states from mysql db"""
 import MySQLdb
 import sys
 
+def get_states(username, password, database):
+    db = MySQLdb.connect(
+    host = 'localhost',
+    user = username,
+    passwd = password,
+    db = database,
+    port=3306)
+    
+    cursor = db.cursor()
+    sql_query = "SELECT * FROM states ORDER BY states.id ASC"
+    cursor.execute(sql_query)
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row)
+    cursor.close()
+    db.close()
 
-mysql_username = sys.argv[1]
-mysql_password = sys.argv[2]
-database_name = sys.argv[3]
-
-db = MySQLdb.connect(
-    host='localhost',
-    user=mysql_username,
-    passwd=mysql_password,
-    db=database_name,
-    port=3306
-)
-
-cursor = db.cursor()
-sql_query = "SELECT * FROM states ORDER BY states.id ASC"
-cursor.execute(sql_query)
-rows = cursor.fetchall()
-for row in rows:
-    print(row)
-
-
-cursor.close()
-db.close()
+if __name__ == "__main__":
+    mysql_username = sys.argv[1]
+    mysql_password = sys.argv[2]
+    database_name = sys.argv[3]
+    get_states(mysql_username, mysql_password, database_name)
