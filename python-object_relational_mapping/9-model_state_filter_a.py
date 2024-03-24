@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" Lists object contains 'a'"""
 from model_state import State, Base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
@@ -12,10 +13,7 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    if session.query(State):
-        for state in session.query(State).filter(State.name.contains('a'))\
-                                        .order_by(State.id):
-            print("{}: {}".format(state.id, state.name))
-    else:
-        print("Empty database")
+    for state in session.query(State).filter(State.name.like('%a%'))\
+            .order_by(State.id).all():
+        print("{}: {}".format(state.id, state.name))
     session.close()
