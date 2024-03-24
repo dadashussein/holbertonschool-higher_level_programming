@@ -15,7 +15,7 @@ if __name__ == "__main__":
     if session.query(State):
         for state in session.query(State).filter(State.name.contains('a'))\
                                         .order_by(State.id):
-            print(state.id, state.name)
+            print("{}: {}".format(state.id, state.name))
     else:
         print("Empty database")
     session.close()
